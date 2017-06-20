@@ -32,10 +32,10 @@ class NetworkHelper{
                    let jsonDic = rawJson as? NSDictionary{
                     
                     // strip the "header data" like the version, feed_url etc
-                    if let articlesJson = jsonDic["items"] as? [NSDictionary]{
+                    if let articlesDicts = jsonDic["items"] as? [NSDictionary]{
                                                 
                         // JSON retrieved
-                        completion(.articleRequestSucceeded(response: articlesJson))
+                        completion(.articleRequestSucceeded(response: articlesDicts))
                     }
                     else{
                         completion(.invalidResponse)
