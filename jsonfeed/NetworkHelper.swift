@@ -6,6 +6,8 @@
 //  Copyright © 2017 Ivan. All rights reserved.
 //
 
+
+
 import Foundation
 import Alamofire
 
@@ -13,20 +15,48 @@ class NetworkHelper{
     
     static let ARTICLE_URL = "https://applefocus.com/feed.json"
     
-    class func fetchArticleJSON(){
+    /*
+    
+     Fetch articles from the network and return an array of articles as NSDictionaries
+    if everything went as planned, return error responses otherwise.
+     
+     */
+    class func fetchArticleJSON(completion:@escaping (ResponseType)->Void){
         
+        // do a network request to fetch the article data
         Alamofire.request(NetworkHelper.ARTICLE_URL).responseJSON { response in
-            print("Request: \(String(describing: response.request))")   // original url request
-            print("Response: \(String(describing: response.response))") // http url response
-            print("Result: \(response.result)")                         // response serialization result
             
-            if let json = response.result.value {
-                print("JSON: \(json)") // serialized json response
+            if(response.response?.statusCode == 200){
+                
+                if let rawJson = response.result.value,
+                   let jsonDic = rawJson as? NSDictionary{
+                    
+                    // strip the "header data" like the version, feed_url etc
+                    if let articlesJson = jsonDic["items"] as? [NSDictionary]{
+                                                
+                        // JSON retrieved
+                        completion(.articleRequestSucceeded(response: articlesJson))
+                    }
+                    else{
+                        completion(.invalidResponse)
+                    }
+                    
+                    
+                }
+                else{
+                    // couldn't retrieve JSON
+                    completion(.invalidResponse)
+                }
+                
+            }
+            else{
+                
+                // request failed
+                completion(.requestFailed)
+                
             }
             
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                print("Data: \(utf8Text)") // original server data as UTF8 string
-            }
+
         }
         
     }

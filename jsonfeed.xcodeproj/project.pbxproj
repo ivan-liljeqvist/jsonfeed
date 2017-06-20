@@ -14,8 +14,10 @@
 		575C6F961EF99DE300884B66 /* jsonfeed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 575C6F941EF99DE300884B66 /* jsonfeed.xcdatamodeld */; };
 		575C6F981EF99DE300884B66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 575C6F971EF99DE300884B66 /* Assets.xcassets */; };
 		575C6F9B1EF99DE300884B66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 575C6F991EF99DE300884B66 /* LaunchScreen.storyboard */; };
-		575C6FA41EF9A35400884B66 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575C6FA31EF9A35400884B66 /* Article.swift */; };
 		575C6FA61EF9A4FB00884B66 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575C6FA51EF9A4FB00884B66 /* NetworkHelper.swift */; };
+		575C6FAB1EF9A8E400884B66 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575C6FA71EF9A8E400884B66 /* Author.swift */; };
+		575C6FAD1EF9A8E400884B66 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575C6FA91EF9A8E400884B66 /* Article.swift */; };
+		575C6FB01EF9AA1D00884B66 /* ResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575C6FAF1EF9AA1D00884B66 /* ResponseType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +30,10 @@
 		575C6F971EF99DE300884B66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		575C6F9A1EF99DE300884B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		575C6F9C1EF99DE300884B66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		575C6FA31EF9A35400884B66 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		575C6FA51EF9A4FB00884B66 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		575C6FA71EF9A8E400884B66 /* Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
+		575C6FA91EF9A8E400884B66 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		575C6FAF1EF9AA1D00884B66 /* ResponseType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseType.swift; sourceTree = "<group>"; };
 		66841922DF23B995D3552506 /* Pods_jsonfeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_jsonfeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8144DB927A9BDD84F17E6028 /* Pods-jsonfeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsonfeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-jsonfeed/Pods-jsonfeed.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +88,7 @@
 				575C6F9C1EF99DE300884B66 /* Info.plist */,
 				575C6F941EF99DE300884B66 /* jsonfeed.xcdatamodeld */,
 				575C6FA51EF9A4FB00884B66 /* NetworkHelper.swift */,
+				575C6FAF1EF9AA1D00884B66 /* ResponseType.swift */,
 			);
 			path = jsonfeed;
 			sourceTree = "<group>";
@@ -91,7 +96,8 @@
 		575C6FA21EF99E0900884B66 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				575C6FA31EF9A35400884B66 /* Article.swift */,
+				575C6FA71EF9A8E400884B66 /* Author.swift */,
+				575C6FA91EF9A8E400884B66 /* Article.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -229,11 +235,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				575C6FA41EF9A35400884B66 /* Article.swift in Sources */,
+				575C6FAD1EF9A8E400884B66 /* Article.swift in Sources */,
 				575C6F901EF99DE300884B66 /* ViewController.swift in Sources */,
 				575C6FA61EF9A4FB00884B66 /* NetworkHelper.swift in Sources */,
 				575C6F961EF99DE300884B66 /* jsonfeed.xcdatamodeld in Sources */,
 				575C6F8E1EF99DE300884B66 /* AppDelegate.swift in Sources */,
+				575C6FAB1EF9A8E400884B66 /* Author.swift in Sources */,
+				575C6FB01EF9AA1D00884B66 /* ResponseType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

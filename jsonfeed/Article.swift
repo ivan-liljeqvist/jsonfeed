@@ -1,18 +1,22 @@
 //
 //  Article.swift
-//  jsonfeed
+//  
 //
 //  Created by Ivan Liljeqvist on 2017-06-20.
-//  Copyright © 2017 Ivan. All rights reserved.
+//
 //
 
-import UIKit
-import CoreData
 import Foundation
+import CoreData
 
-class Article: NSManagedObject {
+public class Article: NSManagedObject {
+    
+    init(withDictionary dic:NSDictionary, andContext context:NSManagedObjectContext){
+        
+        super.init(entity: Article.entity(), insertInto: context)
+        
+        
+        
+    }
 
-    
-    
 }
-

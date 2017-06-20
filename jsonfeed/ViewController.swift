@@ -15,7 +15,24 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
         
-        NetworkHelper.fetchArticleJSON()
+        NetworkHelper.fetchArticleJSON(completion: { (response) in
+            
+            switch(response){
+                
+            case ResponseType.articleRequestSucceeded(let articlesJson):
+                
+                print(articlesJson)
+                
+                break
+                
+            default:
+                print("couldn't fetch articles!")
+                break
+                
+            }
+
+        
+        })
     
     }
 
