@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class ArticleFeedViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     var articles:[Article] = []
 
@@ -21,16 +21,35 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         super.viewDidLoad()
         
         
+        fetchArticles()
         
-        Article.fetchOffline { (articles:[Article]) in
-            self.articles = articles
-            self.articleTableView.reloadData()
-        }
         
         articleTableView.delegate = self
         articleTableView.dataSource = self
         articleTableView.rowHeight = UITableViewAutomaticDimension
         articleTableView.estimatedRowHeight = 150
+    }
+    
+    func fetchArticles(){
+        
+        let fetchCompletion = { (articles:[Article]) in
+            
+            if articles.count > 0{
+                self.articles = articles
+                self.articleTableView.reloadData()
+            }
+            
+        }
+        
+        // fetch from disk
+        Article.fetchOffline { (articles:[Article]) in
+            fetchCompletion(articles)
+            
+            // fetch from the net
+            Article.fetchOnline(completion: fetchCompletion)
+            
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

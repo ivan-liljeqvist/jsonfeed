@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		055971ACC2C1B004CE6C9705 /* Pods_jsonfeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66841922DF23B995D3552506 /* Pods_jsonfeed.framework */; };
 		575C6F8E1EF99DE300884B66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575C6F8D1EF99DE300884B66 /* AppDelegate.swift */; };
-		575C6F901EF99DE300884B66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575C6F8F1EF99DE300884B66 /* ViewController.swift */; };
+		575C6F901EF99DE300884B66 /* ArticleFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575C6F8F1EF99DE300884B66 /* ArticleFeedViewController.swift */; };
 		575C6F931EF99DE300884B66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 575C6F911EF99DE300884B66 /* Main.storyboard */; };
 		575C6F961EF99DE300884B66 /* jsonfeed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 575C6F941EF99DE300884B66 /* jsonfeed.xcdatamodeld */; };
 		575C6F981EF99DE300884B66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 575C6F971EF99DE300884B66 /* Assets.xcassets */; };
@@ -28,7 +28,7 @@
 		0E159731A5D37AF0AD62AD70 /* Pods-jsonfeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsonfeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jsonfeed/Pods-jsonfeed.debug.xcconfig"; sourceTree = "<group>"; };
 		575C6F8A1EF99DE300884B66 /* jsonfeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jsonfeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		575C6F8D1EF99DE300884B66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		575C6F8F1EF99DE300884B66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		575C6F8F1EF99DE300884B66 /* ArticleFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFeedViewController.swift; sourceTree = "<group>"; };
 		575C6F921EF99DE300884B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		575C6F951EF99DE300884B66 /* jsonfeed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = jsonfeed.xcdatamodel; sourceTree = "<group>"; };
 		575C6F971EF99DE300884B66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,6 +87,7 @@
 		575C6F8C1EF99DE300884B66 /* jsonfeed */ = {
 			isa = PBXGroup;
 			children = (
+				575C6FBA1EFA6A7700884B66 /* utils */,
 				575C6FB31EF9CEE400884B66 /* UI */,
 				575C6FA21EF99E0900884B66 /* Models */,
 				575C6F8D1EF99DE300884B66 /* AppDelegate.swift */,
@@ -95,9 +96,6 @@
 				575C6F991EF99DE300884B66 /* LaunchScreen.storyboard */,
 				575C6F9C1EF99DE300884B66 /* Info.plist */,
 				575C6F941EF99DE300884B66 /* jsonfeed.xcdatamodeld */,
-				575C6FA51EF9A4FB00884B66 /* NetworkHelper.swift */,
-				575C6FAF1EF9AA1D00884B66 /* ResponseType.swift */,
-				575C6FB81EFA5C0100884B66 /* Utils.swift */,
 			);
 			path = jsonfeed;
 			sourceTree = "<group>";
@@ -114,12 +112,22 @@
 		575C6FB31EF9CEE400884B66 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				575C6F8F1EF99DE300884B66 /* ViewController.swift */,
+				575C6F8F1EF99DE300884B66 /* ArticleFeedViewController.swift */,
 				575C6FB11EF9C40F00884B66 /* ArticleTableCell.swift */,
 				575C6FB41EF9CF0500884B66 /* ArticleDetailsViewController.swift */,
 				575C6FB61EFA53AB00884B66 /* ArticleDetailsWebviewCell.swift */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		575C6FBA1EFA6A7700884B66 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				575C6FA51EF9A4FB00884B66 /* NetworkHelper.swift */,
+				575C6FAF1EF9AA1D00884B66 /* ResponseType.swift */,
+				575C6FB81EFA5C0100884B66 /* Utils.swift */,
+			);
+			name = utils;
 			sourceTree = "<group>";
 		};
 		C5BFAFC6B424925064EDAB70 /* Pods */ = {
@@ -257,7 +265,7 @@
 			files = (
 				575C6FAD1EF9A8E400884B66 /* Article.swift in Sources */,
 				575C6FB91EFA5C0100884B66 /* Utils.swift in Sources */,
-				575C6F901EF99DE300884B66 /* ViewController.swift in Sources */,
+				575C6F901EF99DE300884B66 /* ArticleFeedViewController.swift in Sources */,
 				575C6FB51EF9CF0500884B66 /* ArticleDetailsViewController.swift in Sources */,
 				575C6FA61EF9A4FB00884B66 /* NetworkHelper.swift in Sources */,
 				575C6F961EF99DE300884B66 /* jsonfeed.xcdatamodeld in Sources */,

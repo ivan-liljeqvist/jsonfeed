@@ -97,14 +97,22 @@ extension Article{
                     
                 case ResponseType.articleRequestSucceeded(let articlesDicts):
                     
+                    // if new articles came from the network, clear the disk cache
+                    if articlesDicts.count > 0{
+                        
+                        Article.deleteAllFromDisk()
+                        
+                    }
+                    
                     // parse articles
                     for articleDict in articlesDicts{
                         articles.append(Article(withDictionary: articleDict, andContext: context))
                     }
                     
+                    // sort by date
                     articles = Article.sortArticles(articles: articles)
-                    completion(articles)
                     
+                    completion(articles)
                     
                     break
                     
@@ -180,6 +188,31 @@ extension Article{
             
             
         }
+    }
+    
+    class func deleteAllFromDisk()
+    {
+        
+        
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
+            
+            let context = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<Article>(entityName:"Article")
+            request.returnsObjectsAsFaults = false
+            
+            do{
+                let articles = try context.fetch(request)
+                for article in articles{
+                    context.delete(article)
+                }
+            }
+            catch _{
+                print("couldn't delete all articles from disk")
+            }
+            
+        }
+        
+        
     }
     
 }

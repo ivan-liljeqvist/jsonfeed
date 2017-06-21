@@ -12,6 +12,7 @@ class Utils{
     
     static let DATE_FORMAT = "EEE, dd MMM yyyy HH:mm:ss -zzzz"
     
+    // date formatter used in several places in the app
     class func dateFormatter()->DateFormatter{
         
         let dateFormatter = DateFormatter()
