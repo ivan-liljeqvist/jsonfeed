@@ -33,7 +33,7 @@ public class Article: NSManagedObject {
             if let dateString = dic["date_published"] as? String {
                 
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "EEE, dd MMM yyyy hh:mm:ss -zzzz"
+                dateFormatter.dateFormat = Constants.DATE_FORMAT
                 if let date = dateFormatter.date(from: dateString){
                     self.datePublished = date as NSDate
                 }

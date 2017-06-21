@@ -14,6 +14,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     @IBOutlet weak var articleTableView: UITableView!
     
+    var lastClickedArticle:Article?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +56,17 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         let cell = articleTableView.dequeueReusableCell(withIdentifier: "articleCell") as! ArticleTableCell
         cell.article = self.articles[indexPath.row]
+        cell.separatorInset = .zero
+        
         return cell
         
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        lastClickedArticle = self.articles[indexPath.row]
+        self.performSegue(withIdentifier: "toArticleDetails", sender: self)
         
     }
     
@@ -76,6 +87,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     for articleDict in articlesDicts{
                         self.articles.append(Article(withDictionary: articleDict, andContext: context))
                     }
+                    
+                    self.sortArticles()
                     
                     self.articleTableView.reloadData()
                     
@@ -98,6 +111,48 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     
+    func sortArticles(){
+        
+        let calendar = Calendar.current
+        
+        self.articles.sort {
+            
+            // try to unwrap dates
+            if let dateA = $0.datePublished as Date?,
+                let dateB = $1.datePublished as
+                    Date?{
+                
+                let elapsed0 = dateA.timeIntervalSince(calendar.startOfDay(for: dateA))
+                let elapsed1 = dateB.timeIntervalSince(calendar.startOfDay(for: dateB))
+                return elapsed0 < elapsed1
+                
+            }
+            // if can't unrap date
+            else{
+                return true
+            }
+            
+            
+        }
+
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // set the article in ArticleDetailsController
+        if segue.identifier == "toArticleDetails"{
+        
+            if let destVC = segue.destination as? ArticleDetailsViewController{
+                destVC.article = lastClickedArticle
+            }
+        
+        }
+        
+    }
+    
+
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -106,4 +161,5 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
 
 }
+
 
