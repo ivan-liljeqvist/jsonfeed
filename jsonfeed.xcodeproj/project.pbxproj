@@ -22,6 +22,7 @@
 		575C6FB51EF9CF0500884B66 /* ArticleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575C6FB41EF9CF0500884B66 /* ArticleDetailsViewController.swift */; };
 		575C6FB71EFA53AB00884B66 /* ArticleDetailsWebviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575C6FB61EFA53AB00884B66 /* ArticleDetailsWebviewCell.swift */; };
 		575C6FB91EFA5C0100884B66 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575C6FB81EFA5C0100884B66 /* Utils.swift */; };
+		575C6FBC1EFA77D900884B66 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 575C6FBB1EFA77D900884B66 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		575C6FB41EF9CF0500884B66 /* ArticleDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetailsViewController.swift; sourceTree = "<group>"; };
 		575C6FB61EFA53AB00884B66 /* ArticleDetailsWebviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetailsWebviewCell.swift; sourceTree = "<group>"; };
 		575C6FB81EFA5C0100884B66 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		575C6FBB1EFA77D900884B66 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		66841922DF23B995D3552506 /* Pods_jsonfeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_jsonfeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8144DB927A9BDD84F17E6028 /* Pods-jsonfeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsonfeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-jsonfeed/Pods-jsonfeed.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +71,7 @@
 		575C6F811EF99DE300884B66 = {
 			isa = PBXGroup;
 			children = (
+				575C6FBB1EFA77D900884B66 /* Settings.bundle */,
 				575C6F8C1EF99DE300884B66 /* jsonfeed */,
 				575C6F8B1EF99DE300884B66 /* Products */,
 				C5BFAFC6B424925064EDAB70 /* Pods */,
@@ -202,6 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				575C6FBC1EFA77D900884B66 /* Settings.bundle in Resources */,
 				575C6F9B1EF99DE300884B66 /* LaunchScreen.storyboard in Resources */,
 				575C6F981EF99DE300884B66 /* Assets.xcassets in Resources */,
 				575C6F931EF99DE300884B66 /* Main.storyboard in Resources */,

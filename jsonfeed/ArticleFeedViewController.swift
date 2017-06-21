@@ -72,7 +72,29 @@ UISearchBarDelegate{
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // set the article in ArticleDetailsController
+        if segue.identifier == "toArticleDetails"{
+            
+            if let destVC = segue.destination as? ArticleDetailsViewController{
+                destVC.article = lastClickedArticle
+            }
+            
+        }
+        
+    }
     
+    
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    // MARK: Search delegate
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
         searchMode = true
@@ -120,7 +142,7 @@ UISearchBarDelegate{
         self.articleTableView.reloadData()
     }
     
-    
+    // MARK: Table delegate
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -167,26 +189,7 @@ UISearchBarDelegate{
     
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        // set the article in ArticleDetailsController
-        if segue.identifier == "toArticleDetails"{
-        
-            if let destVC = segue.destination as? ArticleDetailsViewController{
-                destVC.article = lastClickedArticle
-            }
-        
-        }
-        
-    }
     
-
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
 
 }

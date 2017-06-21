@@ -13,7 +13,19 @@ import Alamofire
 
 class NetworkHelper{
     
-    static let ARTICLE_URL = "https://applefocus.com/feed.json"
+    static var articleUrl = "https://applefocus.com/feed.json"
+    
+    /*
+        Try to get the url from the Settings app
+     */
+    class func initFromSettings(){
+        let appDefaults = [String:AnyObject]()
+        UserDefaults.standard.register(defaults: appDefaults)
+       
+        if let feedUrl = UserDefaults.standard.string(forKey: "feed_url"){
+            articleUrl = feedUrl
+        }
+    }
     
     /*
     
@@ -24,7 +36,7 @@ class NetworkHelper{
     class func fetchArticleJSON(completion:@escaping (ResponseType)->Void){
         
         // do a network request to fetch the article data
-        Alamofire.request(NetworkHelper.ARTICLE_URL).responseJSON { response in
+        Alamofire.request(NetworkHelper.articleUrl).responseJSON { response in
             
             if(response.response?.statusCode == 200){
                 
