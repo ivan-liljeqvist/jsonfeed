@@ -76,6 +76,7 @@ UISearchBarDelegate{
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
         searchMode = true
+        filteredArticles = []
         self.articleTableView.reloadData()
     }
     
@@ -106,6 +107,7 @@ UISearchBarDelegate{
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchMode = false
+        filteredArticles = []
         self.articleTableView.reloadData()
     }
     
@@ -114,6 +116,7 @@ UISearchBarDelegate{
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
         searchMode = false
+        filteredArticles = []
         self.articleTableView.reloadData()
     }
     
