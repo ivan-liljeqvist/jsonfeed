@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Apple News-->
+        <!--Apple Times-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ArticleFeedViewController" customModule="jsonfeed" customModuleProvider="target" sceneMemberID="viewController">
@@ -96,7 +96,7 @@
                             <constraint firstItem="dIz-ci-yGe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gnz-cd-HwZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Apple News" id="E6A-dh-BxU"/>
+                    <navigationItem key="navigationItem" title="Apple Times" id="E6A-dh-BxU"/>
                     <connections>
                         <outlet property="articleTableView" destination="dIz-ci-yGe" id="EYb-vI-Wz2"/>
                         <outlet property="searchBar" destination="cZV-n1-ybb" id="o4V-2F-w3m"/>
