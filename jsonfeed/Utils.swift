@@ -11,6 +11,7 @@ import Foundation
 class Utils{
     
     static let DATE_FORMAT = "EEE, dd MMM yyyy HH:mm:ss -zzzz"
+    static let NORMAL_FONT = "Avenir Book"
     
     // date formatter used in several places in the app
     class func dateFormatter()->DateFormatter{

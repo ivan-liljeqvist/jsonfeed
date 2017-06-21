@@ -26,9 +26,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search among articles" id="cZV-n1-ybb">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="BYZ-38-t0r" id="ZhE-TN-o0p"/>
+                                    </connections>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="articleCell" rowHeight="151" id="zBD-CV-xvE" customClass="ArticleTableCell" customModule="jsonfeed" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="151"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="151"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zBD-CV-xvE" id="iAo-Wh-hY9">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
@@ -89,19 +99,11 @@
                     <navigationItem key="navigationItem" title="Apple News" id="E6A-dh-BxU"/>
                     <connections>
                         <outlet property="articleTableView" destination="dIz-ci-yGe" id="EYb-vI-Wz2"/>
-                        <outlet property="searchDisplayController" destination="CW9-Fz-3O2" id="lxn-Fb-uez"/>
+                        <outlet property="searchBar" destination="cZV-n1-ybb" id="o4V-2F-w3m"/>
                         <segue destination="lDX-V3-4Ma" kind="show" identifier="toArticleDetails" id="Xp1-cu-WzP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="CW9-Fz-3O2">
-                    <connections>
-                        <outlet property="delegate" destination="BYZ-38-t0r" id="Ue1-WG-oqc"/>
-                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="qgy-j7-bSC"/>
-                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="dvX-FM-cgx"/>
-                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="J0Q-xW-rvk"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1056.8" y="120.98950524737631"/>
         </scene>

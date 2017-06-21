@@ -8,9 +8,15 @@
 
 import UIKit
 
-class ArticleFeedViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class ArticleFeedViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,
+UISearchBarDelegate{
     
     var articles:[Article] = []
+    var filteredArticles:[Article] = []
+    
+    var searchMode = false
+    
+    @IBOutlet weak var searchBar: UISearchBar!
 
     @IBOutlet weak var articleTableView: UITableView!
     
@@ -22,6 +28,8 @@ class ArticleFeedViewController: UIViewController,UITableViewDelegate,UITableVie
         
         
         fetchArticles()
+        
+        searchBar.delegate = self
         
         
         articleTableView.delegate = self
@@ -56,7 +64,7 @@ class ArticleFeedViewController: UIViewController,UITableViewDelegate,UITableVie
         
         
         
-        if let font = UIFont(name: "Avenir Book", size: 20){
+        if let font = UIFont(name: Utils.NORMAL_FONT, size: 20){
             
             self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white,
                                                                             NSFontAttributeName:font]
@@ -65,19 +73,47 @@ class ArticleFeedViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+        searchMode = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchMode = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+        searchMode = false
+    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchMode{
+            return filteredArticles.count
+        }
         return articles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = articleTableView.dequeueReusableCell(withIdentifier: "articleCell") as! ArticleTableCell
-        cell.article = self.articles[indexPath.row]
+        
+        if searchMode{
+            cell.article = self.filteredArticles[indexPath.row]
+        }
+        else{
+            cell.article = self.articles[indexPath.row]
+        }
+        
+        
         cell.separatorInset = .zero
         
         return cell
@@ -87,7 +123,13 @@ class ArticleFeedViewController: UIViewController,UITableViewDelegate,UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        lastClickedArticle = self.articles[indexPath.row]
+        if searchMode{
+            lastClickedArticle = self.filteredArticles[indexPath.row]
+        }
+        else{
+            lastClickedArticle = self.articles[indexPath.row]
+        }
+        
         self.performSegue(withIdentifier: "toArticleDetails", sender: self)
         
     }
