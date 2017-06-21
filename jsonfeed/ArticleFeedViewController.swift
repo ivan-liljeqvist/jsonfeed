@@ -78,9 +78,34 @@ UISearchBarDelegate{
         searchMode = true
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        
+        self.filteredArticles = articles.filter { article in
+            
+            // unwrap title and content
+            if let title = article.title,
+                let content = article.contentText{
+                
+                // see if search matches
+                return title.lowercased().contains(searchText.lowercased()) ||
+                        content.lowercased().contains(searchText.lowercased())
+                
+            }
+            
+            return false
+            
+        }
+        
+        
+        self.articleTableView.reloadData()
+        
+    }
+    
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchMode = false
+        self.articleTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -88,6 +113,7 @@ UISearchBarDelegate{
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
         searchMode = false
+        self.articleTableView.reloadData()
     }
     
     
