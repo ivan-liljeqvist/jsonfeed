@@ -34,9 +34,11 @@ public class Article: NSManagedObject {
                 
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = Constants.DATE_FORMAT
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
                 if let date = dateFormatter.date(from: dateString){
                     self.datePublished = date as NSDate
                 }
+     
            
             }
             
