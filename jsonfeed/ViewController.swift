@@ -22,7 +22,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         
         
-        loadArticles()
+        Article.fetchOffline { (articles:[Article]) in
+            self.articles = articles
+            self.articleTableView.reloadData()
+        }
         
         articleTableView.delegate = self
         articleTableView.dataSource = self
@@ -70,73 +73,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
     }
     
-    func loadArticles(){
-        
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
-            
-            let context = appDelegate.persistentContainer.viewContext
-            
-            // do network request
-            NetworkHelper.fetchArticleJSON(completion: { (response) in
-                
-                switch(response){
-                    
-                case ResponseType.articleRequestSucceeded(let articlesDicts):
-                    
-                    // parse articles
-                    for articleDict in articlesDicts{
-                        self.articles.append(Article(withDictionary: articleDict, andContext: context))
-                    }
-                    
-                    self.sortArticles()
-                    
-                    self.articleTableView.reloadData()
-                    
-                    
-                    break
-                
-                // failed to fetch articles from the network
-                default:
-                    print("couldn't fetch articles!")
-                    break
-                    
-                }
-                
-                
-            })
-            
-            
-        }
-        
-    }
     
     
-    func sortArticles(){
-        
-        let calendar = Calendar.current
-        
-        self.articles.sort {
-            
-            // try to unwrap dates
-            if let dateA = $0.datePublished as Date?,
-                let dateB = $1.datePublished as
-                    Date?{
-                
-                let elapsed0 = dateA.timeIntervalSince(calendar.startOfDay(for: dateA))
-                let elapsed1 = dateB.timeIntervalSince(calendar.startOfDay(for: dateB))
-                return elapsed0 < elapsed1
-                
-            }
-            // if can't unrap date
-            else{
-                return true
-            }
-            
-            
-        }
-
-        
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
