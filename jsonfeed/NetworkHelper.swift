@@ -19,12 +19,14 @@ class NetworkHelper{
         Try to get the url from the Settings app
      */
     class func initFromSettings(){
+        
         let appDefaults = [String:AnyObject]()
         UserDefaults.standard.register(defaults: appDefaults)
        
         if let feedUrl = UserDefaults.standard.string(forKey: "feed_url"){
             articleUrl = feedUrl
         }
+        
     }
     
     /*

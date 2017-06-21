@@ -38,6 +38,8 @@ UISearchBarDelegate{
         articleTableView.estimatedRowHeight = 150
     }
     
+    
+    
     func fetchArticles(){
         
         let fetchCompletion = { (articles:[Article]) in
@@ -69,6 +71,24 @@ UISearchBarDelegate{
             self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white,
                                                                             NSFontAttributeName:font]
         }
+        
+        if !Utils.isInternetAvailable(){
+            
+            // show alert with info
+            let alertController = UIAlertController(title: nil, message: "No Internet connection!", preferredStyle: UIAlertControllerStyle.alert)
+            
+            
+            let awesomeButton = UIAlertAction(title: "Let's roll offline", style: UIAlertActionStyle.default) {
+                (result : UIAlertAction) -> Void in
+                
+            }
+            
+            alertController.addAction(awesomeButton)
+            self.present(alertController, animated: true, completion: nil)
+
+            
+        }
+        
         
     }
     
